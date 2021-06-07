@@ -78,21 +78,21 @@ def train(X, Y, learning_rate, W, b, epochs, losses):
         W, b = update_parameters(W, b, dW, db, learning_rate)
     return W, b, losses
 
-# Initializing parameters
-X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]) # declaring two data points
-Y = np.array([0, 0, 0, 1]) # actual label
-weights = np.array([0.0, 0.0]) # weights of perceptron
-bias = 0.0 # bias value
-epochs = 10000 # total epochs
-learning_rate = 0.01 # learning rate
-losses = np.zeros((epochs, 1)) # compute loss
+# Инициализация параметров
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]) # объявление двух точек данных
+Y = np.array([0, 0, 0, 1]) # целевые метки
+weights = np.array([0.0, 0.0]) # веса
+bias = 0.0 # смещение
+epochs = 10000 # эпохи
+learning_rate = 0.01 # скорость обучения
+losses = np.zeros((epochs, 1)) # вычисление потерь
 print("Before training")
 print("weights:", weights, "bias:", bias)
 print("Target labels:", Y)
 
 weights, bias, losses = train(X, Y, learning_rate, weights, bias, epochs, losses)
 
-# Evaluating the performance
+# оценка производительности
 plt.figure()
 plt.plot(losses)
 plt.xlabel("EPOCHS")
@@ -103,7 +103,7 @@ plt.savefig('output/legend.png')
 print("\nAfter training")
 print("weights:", weights, "bias:", bias)
 
-# Predict value
+# значение прогноза
 A2 = forward_propagation(X, weights, bias)
 pred = (A2 > 0.5) * 1
 print("Predicted labels:", pred)
